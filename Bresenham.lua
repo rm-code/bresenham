@@ -21,7 +21,7 @@
 --==================================================================================
 
 local Bresenham = {
-    _VERSION     = "1.0.0",
+    _VERSION     = "1.1.0",
     _DESCRIPTION = "Bresenham's line algorithm written in Lua." ,
     _URL         = 'https://github.com/rm-code/bresenham/',
 };
