@@ -39,9 +39,10 @@ local Bresenham = {
 -- @ex       (number)   The x-coordinates of the target.
 -- @ey       (number)   The y-coordinates of the target.
 -- @callback (function) A callback function being called for every tile the line passes.
+-- @...      (varargs)  Additional parameters which will be forwarded to the callback.
 -- @return   (boolean)  True if the target was reached, otherwise false.
 --
-function Bresenham.calculateLine( ox, oy, ex, ey, callback )
+function Bresenham.calculateLine( ox, oy, ex, ey, callback, ... )
     local dx = math.abs( ex - ox );
     local dy = math.abs( ey - oy ) * -1;
 
@@ -51,7 +52,7 @@ function Bresenham.calculateLine( ox, oy, ex, ey, callback )
 
     local counter = 0;
     while true do
-        local continue = callback( ox, oy, counter );
+        local continue = callback( ox, oy, counter, ... );
         if not continue then
             return false;
         end
