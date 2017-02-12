@@ -26,8 +26,8 @@ print( 'Stop line early.' )
 Bresenham.calculateLine( 1, 1, 7, 7, function( x, y, counter )
     print( x, y, counter, grid[x][y] )
     if grid[x][y] == '2' then
-        return false;
+        return false
     end
-    return true;
+    return true
 end)
 ```
