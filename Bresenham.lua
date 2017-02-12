@@ -24,7 +24,7 @@ local Bresenham = {
     _VERSION     = "1.1.0",
     _DESCRIPTION = "Bresenham's line algorithm written in Lua." ,
     _URL         = 'https://github.com/rm-code/bresenham/',
-};
+}
 
 ---
 -- Maps a line from point (ox, oy) to point (ex, ey) onto a two dimensional
@@ -43,36 +43,36 @@ local Bresenham = {
 -- @return   (boolean)  True if the target was reached, otherwise false.
 --
 function Bresenham.calculateLine( ox, oy, ex, ey, callback, ... )
-    local dx = math.abs( ex - ox );
-    local dy = math.abs( ey - oy ) * -1;
+    local dx = math.abs( ex - ox )
+    local dy = math.abs( ey - oy ) * -1
 
-    local sx = ox < ex and 1 or -1;
-    local sy = oy < ey and 1 or -1;
-    local err = dx + dy;
+    local sx = ox < ex and 1 or -1
+    local sy = oy < ey and 1 or -1
+    local err = dx + dy
 
-    local counter = 0;
+    local counter = 0
     while true do
-        local continue = callback( ox, oy, counter, ... );
+        local continue = callback( ox, oy, counter, ... )
         if not continue then
-            return false;
+            return false
         end
 
-        counter = counter + 1;
+        counter = counter + 1
 
         if ox == ex and oy == ey then
-            return true;
+            return true
         end
 
-        local tmpErr = 2 * err;
+        local tmpErr = 2 * err
         if tmpErr > dy then
-            err = err + dy;
-            ox = ox + sx;
+            err = err + dy
+            ox = ox + sx
         end
         if tmpErr < dx then
-            err = err + dx;
-            oy = oy + sy;
+            err = err + dx
+            oy = oy + sy
         end
     end
 end
 
-return Bresenham;
+return Bresenham
